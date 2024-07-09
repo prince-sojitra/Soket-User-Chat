@@ -15,7 +15,7 @@ var socketIoHandler = require('../routes/SoketRouter');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '5500');
 app.set('port', port);
 
 /**
@@ -23,7 +23,6 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
-var io = socketIo(server);
 const io = socketIo(server, {
   cors: {
     origin: '*', // Adjust the origin to your frontend's URL if needed
