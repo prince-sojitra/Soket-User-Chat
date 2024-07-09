@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var cors = require('cors')
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://researchcdmi:Research1353@cluster0.dffka2a.mongodb.net/user_Chatbox')
 // https://soket-user-chat.onrender.com
@@ -14,7 +15,7 @@ var usersRouter = require('./routes/users');
 var messageRouter = require('./routes/message'); 
 
 var app = express();
-
+app.use(cors())
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
