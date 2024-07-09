@@ -5,9 +5,11 @@
  */
 
 var app = require('../app');
+
 var debug = require('debug')('soket:server');
 var http = require('http');
 var socketIo = require('socket.io');
+
 var socketIoHandler = require('../routes/SoketRouter');
 /**
  * Get port from environment and store in Express.
@@ -22,6 +24,13 @@ app.set('port', port);
 
 var server = http.createServer(app);
 var io = socketIo(server);
+const io = socketIo(server, {
+  cors: {
+    origin: '*', // Adjust the origin to your frontend's URL if needed
+    methods: ['GET', 'POST']
+  }
+});
+
 /**
  * Listen on provided port, on all network interfaces.
  */
