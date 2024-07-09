@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://researchcdmi:Research1353@cluster0.dffka2a.mongodb.net/user_Chatbox')
+// https://soket-user-chat.onrender.com
   .then(() => console.log('Connected!'))
   .catch(err => console.log(err.message))
   

@@ -1,11 +1,14 @@
   var express = require('express');
   var MESSAGE = require('../model/message');
+  var USERC = require('../controller/user');
   var router = express.Router();
 
 
-  router.post('/create', async function (req, res, next) {
+  router.post('/create',USERC.Sequre, async function (req, res, next) {
     try {
-      let messageCreate = await USER.MESSAGE(req.body)
+      console.log(req.userID);
+      req.body.User = req.userID
+      let messageCreate = await MESSAGE.create(req.body)
       res.status(201).json({
         status: "Success",
         message: "Message Send Successfull",
@@ -19,9 +22,9 @@
     }
   });
 
-  router.get('/', async function (req, res, next) {
+  router.get('/',USERC.Sequre, async function (req, res, next) {
     try {
-      let MessageFind = await USER.find().populate('User');
+      let MessageFind = await MESSAGE.find().populate('User');
       res.status(200).json({
         status: "Success",
         message: "Message Found Successfull",
