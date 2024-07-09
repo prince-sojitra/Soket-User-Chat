@@ -6,7 +6,7 @@ exports.Sequre = async function (req, res, next) {
         if(!token){
             throw new Error("Please Attech Token")
         }
-        var decoded = jwt.verify(token, 'Story');
+        var decoded = jwt.verify(token, 'STORY');
         req.userID = decoded.id
         let UserFind = await USER.findById(decoded.id)
         if(!UserFind){
